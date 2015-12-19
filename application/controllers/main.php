@@ -9,6 +9,11 @@ class Main extends CI_Controller {
 		$this->load->model('main_menu');
 		$data['main_menu'] = $this->main_menu->get_menu();
 
+		//Подгружаем модель категорий
+		$this->load->model('categories_model');
+		$categories = $this->categories_model->get_categories();
+		$data['categories'] = $categories;
+
 		//Параметры представления
 		$data['pathCommon'] = "/markup";
 		$data['title'] = "Главная";

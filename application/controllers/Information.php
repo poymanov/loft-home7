@@ -9,6 +9,11 @@ class Information extends CI_Controller {
 		$this->load->model('main_menu');
 		$data['main_menu'] = $this->main_menu->get_menu();
 
+		//Подгружаем модель категорий
+		$this->load->model('categories_model');
+		$categories = $this->categories_model->get_categories();
+		$data['categories'] = $categories;
+		
 		//Подгружаем модель получения отдельной страницы с информацией
 		$this->load->model('information_model');
 		$information = $this->information_model->get_information($name);

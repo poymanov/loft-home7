@@ -207,13 +207,13 @@ $(document).ready(function(){
         if (!$(this).parent().hasClass('opened')) {
             $(this).closest('ul').find('.categories_item_title.opened').removeClass('opened');
             $(this).parent().addClass('opened');
-
+            
         } else {
             $(this).parent().removeClass('opened');
-
         }
 
         return false;
+
     });
 
     $('.accordeon_list > li.open_as_default').addClass('active')
