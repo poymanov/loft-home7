@@ -9,8 +9,8 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<title><?php echo $title;?></title>
-		<meta name="description" content="">
-		<meta name="keywords" content="">
+		<meta name="description" content="<?php echo $meta_description;?>">
+		<meta name="keywords" content="<?php echo $meta_keywords;?>">
 		<meta name="viewport" content="width=1000">
 
 		<link rel="stylesheet" href="<? echo $pathCommon;?>/css/normalize.css">
@@ -30,7 +30,7 @@
 
 			<header class="banner">
 				<div class="banner_logo">
-					<a href="#">
+					<a href="/">
 						<img src="<? echo $pathCommon;?>/img/logo/main.png" alt="">
 					</a>
 					<span class="banner_seo_text">Оптовый магазин бытовой техники elDelta</span>

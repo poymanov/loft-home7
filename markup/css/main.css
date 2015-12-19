@@ -1114,6 +1114,10 @@ footer {
 }
 .breadcrumbs ul li.active {
   background: none;
+  font-size: 11px;
+  color: #a8a8a8;
+  margin-top: 2px;
+  margin-left: 3px;
 }
 .h1 {
   color: #fb8a31;
