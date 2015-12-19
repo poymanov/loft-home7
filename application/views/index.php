@@ -37,17 +37,7 @@
 					</div>
 				</div>
 			</div>
-			<section class="features_sale">
-				<div class="feautures_green_back"></div>
-				<div class="feautures_sale_product">
-					<img src="<?php echo $pathCommon;?>/img/content/holy_meat_destroyer.png" alt="">
-				</div>
-				<div class="feautures_sale_mask"></div>
-				<div class="feautures_sale_descript">
-					<a href="#">Сезонная распродажа техники для кухни</a>
-				</div>
-				<div class="feautures_sale_stripe"></div>
-			</section>
+			<?php include 'common/sale.php';?>
 		</div>
 	</div>
 </div>

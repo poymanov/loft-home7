@@ -11,7 +11,7 @@
 				<?php } ?>
 		            <div class="categories_list_item">
 		                <div class="categories_item_title">
-		                    <a class="categories_nonclickable" href="/category/<?php echo $category['href'];?>">
+		                    <a class="categories_nonclickable" href="/catalog/<?php echo $category['href'];?>">
 		                        <span><?php echo $category['title'];?></span>
 		                    </a>
 		                </div>
@@ -25,7 +25,7 @@
 									<li>
 									<?php } ?>
 										<div class="categories_sublist_inner">
-				                            <a class="categories_inner_title" href="/category/<?php echo $category2['href'];?>">
+				                            <a class="categories_inner_title" href="/catalog/<?php echo $category2['href'];?>">
 				                                <span><?php echo $category2['title'];?></span>
 				                            </a>
 				                            <span class="categories_sublist_counter">14</span>
@@ -37,7 +37,7 @@
 						                        		<?php foreach ($childrens2 as $category3) { ?>
 															<li>
 												                <div class="categories_sublist_inner">
-												                    <a class="categories_inner_title" href="/category/<?php echo $category3['href'];?>">
+												                    <a class="categories_inner_title" href="/catalog/<?php echo $category3['href'];?>">
 												                        <span><?php echo $category3['title'];?></span>
 												                    </a>
 												                    <span class="categories_sublist_counter">14</span>
@@ -46,7 +46,7 @@
 						                        		<?php }?>
 						                        		<li>
 											                <div class="categories_sublist_inner">
-											                    <a class="categories_inner_title" href="/category/<?php echo $category2['href'];?>">
+											                    <a class="categories_inner_title" href="/catalog/<?php echo $category2['href'];?>">
 											                        <span>Все</span>
 											                    </a>
 											                    <span class="categories_sublist_counter">14</span>
@@ -62,7 +62,7 @@
 			                	<?php if($childrens1) {?>
 							        <li>
 							        	<div class="categories_sublist_inner">
-				                            <a class="categories_inner_title" href="/category/<?php echo $category['href'];?>">
+				                            <a class="categories_inner_title" href="/catalog/<?php echo $category['href'];?>">
 				                                <span>Все</span>
 				                            </a>
 				                            <span class="categories_sublist_counter">14</span>

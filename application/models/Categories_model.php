@@ -30,6 +30,28 @@ class Categories_model extends CI_Model {
         return $categoriesList;
 	}
 
+    public function get_category_info($name) {
+        $query = $this->db->select('id,name,title,meta_keywords,meta_description')->get_where('categories',array('name'=>$name));
+        return $query->row_array();
+    }
+
+    public function get_category_products($id) {
+        //1) Получаем id продуктов по категории
+        $query = $this->db->select('product_id')->get_where('products_categories',array('category_id'=>$id));
+        $products = $query->result_array();
+
+        //2) Собираем все id продуктов в простой массив
+        $idArray = array();
+        foreach ($products as $product) {
+            $idArray[] = $product['product_id'];
+        }
+
+        //3) По id продуктов получаем остальные данные по каждому из продуктов
+        $query = $this->db->select('name,title,image')->where_in('id',$idArray)->get('products');
+        $arrQuery = $query->result_array();
+        return $arrQuery;
+    }
+
     protected function get_categories_childrens($categoryItem,$arrQuery) {
         //Собираем дочерние элементы категории
         $childrens = array();
