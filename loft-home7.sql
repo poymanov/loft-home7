@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50541
 File Encoding         : 65001
 
-Date: 2015-12-20 00:41:41
+Date: 2015-12-20 12:27:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -72,6 +72,7 @@ DROP TABLE IF EXISTS `products`;
 CREATE TABLE `products` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(200) NOT NULL,
+  `h1` varchar(200) NOT NULL,
   `title` varchar(200) NOT NULL,
   `meta_keywords` varchar(100) DEFAULT NULL,
   `meta_description` varchar(100) DEFAULT NULL,
@@ -84,8 +85,8 @@ CREATE TABLE `products` (
 -- ----------------------------
 -- Records of products
 -- ----------------------------
-INSERT INTO `products` VALUES ('1', 'holodilnik-s-nizhnei-morozilnoi-kameroi-indesit-df-4180-w', 'Холодильник с нижней морозильной камерой Indesit DF 4180 W', 'Indesit DF 4180 W купить, Indesit DF 4180 W цена, Indesit DF 4180 W Москва', 'Купить Холодильник с нижней морозильной камерой Indesit DF 4180 W', '22290', null);
-INSERT INTO `products` VALUES ('2', 'holodilnik-s-nizhnei-morozilnoi-kameroi-hotpoint-ariston-hf-5200-w', 'Холодильник с нижней морозильной камерой Hotpoint-Ariston HF 5200 W', 'Hotpoint-Ariston HF 5200 W купить, Hotpoint-Ariston HF 5200 W цена', 'Купить Холодильник с нижней морозильной камерой Hotpoint-Ariston HF 5200 W по доступной цене', '30990', null);
+INSERT INTO `products` VALUES ('1', 'holodilnik-s-nizhnei-morozilnoi-kameroi-indesit-df-4180-w', 'Холодильник с нижней морозильной камерой Indesit DF 4180 W', 'Холодильник с нижней морозильной камерой Indesit DF 4180 W', 'Indesit DF 4180 W купить, Indesit DF 4180 W цена, Indesit DF 4180 W Москва', 'Купить Холодильник с нижней морозильной камерой Indesit DF 4180 W', '22290', null);
+INSERT INTO `products` VALUES ('2', 'holodilnik-s-nizhnei-morozilnoi-kameroi-hotpoint-ariston-hf-5200-w', 'Холодильник с нижней морозильной камерой Hotpoint-Ariston HF 5200 W', 'Холодильник с нижней морозильной камерой Hotpoint-Ariston HF 5200 W', 'Hotpoint-Ariston HF 5200 W купить, Hotpoint-Ariston HF 5200 W цена', 'Купить Холодильник с нижней морозильной камерой Hotpoint-Ariston HF 5200 W по доступной цене', '30990', null);
 
 -- ----------------------------
 -- Table structure for products_categories
@@ -98,8 +99,8 @@ CREATE TABLE `products_categories` (
   PRIMARY KEY (`id`),
   KEY `product_id` (`product_id`),
   KEY `category_id` (`category_id`),
-  CONSTRAINT `products_categories_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `products_categories_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `products_categories_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `products_categories_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
