@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50541
 File Encoding         : 65001
 
-Date: 2015-12-20 12:27:57
+Date: 2015-12-20 13:06:29
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -74,19 +74,20 @@ CREATE TABLE `products` (
   `name` varchar(200) NOT NULL,
   `h1` varchar(200) NOT NULL,
   `title` varchar(200) NOT NULL,
-  `meta_keywords` varchar(100) DEFAULT NULL,
-  `meta_description` varchar(100) DEFAULT NULL,
+  `meta_keywords` text,
+  `meta_description` text,
   `price` float(5,0) NOT NULL,
   `image` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of products
 -- ----------------------------
 INSERT INTO `products` VALUES ('1', 'holodilnik-s-nizhnei-morozilnoi-kameroi-indesit-df-4180-w', 'Холодильник с нижней морозильной камерой Indesit DF 4180 W', 'Холодильник с нижней морозильной камерой Indesit DF 4180 W', 'Indesit DF 4180 W купить, Indesit DF 4180 W цена, Indesit DF 4180 W Москва', 'Купить Холодильник с нижней морозильной камерой Indesit DF 4180 W', '22290', null);
 INSERT INTO `products` VALUES ('2', 'holodilnik-s-nizhnei-morozilnoi-kameroi-hotpoint-ariston-hf-5200-w', 'Холодильник с нижней морозильной камерой Hotpoint-Ariston HF 5200 W', 'Холодильник с нижней морозильной камерой Hotpoint-Ariston HF 5200 W', 'Hotpoint-Ariston HF 5200 W купить, Hotpoint-Ariston HF 5200 W цена', 'Купить Холодильник с нижней морозильной камерой Hotpoint-Ariston HF 5200 W по доступной цене', '30990', null);
+INSERT INTO `products` VALUES ('3', 'holodilnik-s-verhnei-morozilnoi-kameroi-shirokii-lg-gn-m702hmhm', 'Холодильник с верхней морозильной камерой Широкий LG GN-M702HMHM', 'Холодильник с верхней морозильной камерой Широкий LG GN-M702HMHM', 'LG GN-M702HMHM купить, LG GN-M702HMHM цена, LG GN-M702HMHM Москва, Холодильник с верхней морозильной камерой Широкий LG GN-M702HMHM интернет магазин, LG GN-M702HMHM продажа, LG GN-M702HMHM заказ, LG GN-M702HMHM доставка, LG GN-M702HMHM в подарок, LG GN-M702HMHM в кредит, LG GN-M702HMHM аксессуары, LG GN-M702HMHM отзывы, LG GN-M702HMHM описание, LG GN-M702HMHM фото, LG GN-M702HMHM инструкции', 'Купить Холодильник с верхней морозильной камерой Широкий LG GN-M702HMHM по доступной цене в интернет-магазине или в розничной сети магазинов города в Москве. LG GN-M702HMHM - аксессуары, отзывы, описание, фото, инструкция.', '78990', null);
 
 -- ----------------------------
 -- Table structure for products_categories
@@ -101,7 +102,7 @@ CREATE TABLE `products_categories` (
   KEY `category_id` (`category_id`),
   CONSTRAINT `products_categories_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `products_categories_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of products_categories
@@ -112,3 +113,6 @@ INSERT INTO `products_categories` VALUES ('3', '1', '5');
 INSERT INTO `products_categories` VALUES ('4', '2', '1');
 INSERT INTO `products_categories` VALUES ('5', '2', '2');
 INSERT INTO `products_categories` VALUES ('6', '2', '5');
+INSERT INTO `products_categories` VALUES ('7', '3', '1');
+INSERT INTO `products_categories` VALUES ('8', '3', '2');
+INSERT INTO `products_categories` VALUES ('9', '3', '7');

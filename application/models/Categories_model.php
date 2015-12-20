@@ -23,7 +23,8 @@ class Categories_model extends CI_Model {
                 'id' => $itemQuery['id'],
                 'href' => $itemQuery['name'],
                 'title' => $itemQuery['title'],
-                'childrens' =>  $childrens
+                'childrens' =>  $childrens,
+                'products' => $this->count_category_products($itemQuery['id'])
             );
         }
 
@@ -46,10 +47,21 @@ class Categories_model extends CI_Model {
             $idArray[] = $product['product_id'];
         }
 
-        //3) По id продуктов получаем остальные данные по каждому из продуктов
-        $query = $this->db->select('name,title,image')->where_in('id',$idArray)->get('products');
-        $arrQuery = $query->result_array();
-        return $arrQuery;
+        if($idArray) {
+            //3) По id продуктов получаем остальные данные по каждому из продуктов
+            $query = $this->db->select('name,title,image')->where_in('id',$idArray)->get('products');
+            $arrQuery = $query->result_array();
+            return $arrQuery;
+        } else {
+            //если ни одного товара не найдено, возвращаем пустой массив
+            return array();
+        }
+        
+    }
+
+    protected function count_category_products($id) {
+        $query = $this->db->select('product_id')->where('category_id',$id)->count_all_results('products_categories');
+        return $query;
     }
 
     protected function get_categories_childrens($categoryItem,$arrQuery) {
@@ -62,7 +74,8 @@ class Categories_model extends CI_Model {
                     'id' => $itemChildrens['id'],
                     'href' => $itemChildrens['name'],
                     'title' => $itemChildrens['title'],
-                    'childrens' => $this->get_categories_childrens($itemChildrens,$arrQuery)
+                    'childrens' => $this->get_categories_childrens($itemChildrens,$arrQuery),
+                    'products' => $this->count_category_products($itemChildrens['id'])
                 );
             }
         }

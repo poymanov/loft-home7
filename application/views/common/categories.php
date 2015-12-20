@@ -28,7 +28,7 @@
 				                            <a class="categories_inner_title" href="/catalog/<?php echo $category2['href'];?>">
 				                                <span><?php echo $category2['title'];?></span>
 				                            </a>
-				                            <span class="categories_sublist_counter">14</span>
+				                            <span class="categories_sublist_counter"><?php echo $category2['products'];?></span>
 			                        	</div>
 			                        	<?php if($childrens2) {?>
 											<div class="categories_sublist_popup">
@@ -40,7 +40,7 @@
 												                    <a class="categories_inner_title" href="/catalog/<?php echo $category3['href'];?>">
 												                        <span><?php echo $category3['title'];?></span>
 												                    </a>
-												                    <span class="categories_sublist_counter">14</span>
+												                    <span class="categories_sublist_counter"><?php echo $category3['products'];?></span>
 												                </div>
             												</li>
 						                        		<?php }?>
@@ -49,7 +49,7 @@
 											                    <a class="categories_inner_title" href="/catalog/<?php echo $category2['href'];?>">
 											                        <span>Все</span>
 											                    </a>
-											                    <span class="categories_sublist_counter">14</span>
+											                    <span class="categories_sublist_counter"><?php echo $category2['products'];?></span>
 											                </div>
             											</li>
 					                        		</ul>
@@ -65,7 +65,7 @@
 				                            <a class="categories_inner_title" href="/catalog/<?php echo $category['href'];?>">
 				                                <span>Все</span>
 				                            </a>
-				                            <span class="categories_sublist_counter">14</span>
+				                            <span class="categories_sublist_counter"><?php echo $category['products'];?></span>
 			                        	</div>
 							        </li>
 							    <?php }?>
