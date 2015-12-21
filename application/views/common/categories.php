@@ -7,7 +7,7 @@
 				<?php if($childrens1) {?>
 		        <li>
 				<?php } else { ?>
-				<li>
+				<li class="non_subcategories">
 				<?php } ?>
 		            <div class="categories_list_item">
 		                <div class="categories_item_title">

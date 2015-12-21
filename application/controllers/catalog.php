@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Catalog extends CI_Controller {
 
-	public function view_category($name){
+	public function view_category($name,$page = 0){
 
 		//Параметры представления
 		$data['pathCommon'] = "/markup";
@@ -20,8 +20,26 @@ class Catalog extends CI_Controller {
 		//Полученаем информацию по отдельной категории
 		$category = $this->categories_model->get_category_info($name);
 		
+		//Подключаем библиотеку пагинации
+		$this->load->library('pagination');
+
+		//Настройки для пагинации
+		$config = array();
+		$config["base_url"] = base_url() . "catalog/" . $name;
+		$config["total_rows"] = $this->categories_model->count_category_products($category['id']);
+		$config["per_page"] = 6;
+		$config["uri_segment"] = 3;
+		$config['last_link'] = 'Последняя';
+		$config['first_link'] = 'Первая';
+		$this->pagination->initialize($config);
+
+		if($page == 0){
+			$page = ($this->uri->segment(3)) ? $this->uri->segment(2) : 0;
+		}
+
 		//Получаем товары по категории
-		$products = $this->categories_model->get_category_products($category['id']);
+		$products = $this->categories_model->get_category_products($category['id'],$config["per_page"],$page);
+
 		$data['products'] = $products;
 
 		//Если нет такой категории, выводим содержимое страницы 404

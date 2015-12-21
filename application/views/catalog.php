@@ -36,6 +36,7 @@
                     </li>
                 <?php } ?>
             </ul>
+            <?php echo $this->pagination->create_links();?>
         <?php } else {?>
         <?php echo "В данной категории еще пока нет товаров";?>
         <?php } ?>

@@ -36,7 +36,7 @@ class Categories_model extends CI_Model {
         return $query->row_array();
     }
 
-    public function get_category_products($id) {
+    public function get_category_products($id,$limit,$start) {
         //1) Получаем id продуктов по категории
         $query = $this->db->select('product_id')->get_where('products_categories',array('category_id'=>$id));
         $products = $query->result_array();
@@ -49,7 +49,7 @@ class Categories_model extends CI_Model {
 
         if($idArray) {
             //3) По id продуктов получаем остальные данные по каждому из продуктов
-            $query = $this->db->select('name,title,image')->where_in('id',$idArray)->get('products');
+            $query = $this->db->select('name,title,image')->limit($limit, $start)->where_in('id',$idArray)->get('products');
             $arrQuery = $query->result_array();
             return $arrQuery;
         } else {
@@ -59,7 +59,7 @@ class Categories_model extends CI_Model {
         
     }
 
-    protected function count_category_products($id) {
+    public function count_category_products($id) {
         $query = $this->db->select('product_id')->where('category_id',$id)->count_all_results('products_categories');
         return $query;
     }
