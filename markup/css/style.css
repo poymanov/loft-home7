@@ -1363,11 +1363,13 @@ footer {
 }
 .paginator_pages ul li.active {
   background: #004a8f;
+  text-decoration: none;
 }
 .paginator_pages ul li.active a {
   color: #fff;
   text-decoration: none;
 }
+
 .paginator_left {
   background: url("../img/decor/category_arr_left.png") 0 0 no-repeat;
   width: 3px;

@@ -1361,6 +1361,8 @@ footer {
 }
 .paginator_pages ul li.active {
   background: #004a8f;
+  color: #fff;
+  font-size: 11px;
 }
 .paginator_pages ul li.active a {
   color: #fff;

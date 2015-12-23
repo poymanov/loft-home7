@@ -29,8 +29,17 @@ class Catalog extends CI_Controller {
 		$config["total_rows"] = $this->categories_model->count_category_products($category['id']);
 		$config["per_page"] = 6;
 		$config["uri_segment"] = 3;
-		$config['last_link'] = 'Последняя';
-		$config['first_link'] = 'Первая';
+		$config['full_tag_open'] = '<div class="paginator_pages"><ul>';
+		$config['full_tag_close'] = '</ul></div';
+		$config['num_tag_open']  = '<li>';
+		$config['num_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="active">';
+		$config['cur_tag_close'] = '</li>';
+		$config['next_tag_open']  = '<li>';
+		$config['next_tag_close'] = '</li>';
+		$config['prev_tag_open']  = '<li>';
+		$config['prev_tag_close'] = '</li>';
+
 		$this->pagination->initialize($config);
 
 		if($page == 0){
