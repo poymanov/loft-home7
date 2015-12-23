@@ -50,8 +50,10 @@ class Information extends CI_Controller {
 			);
 			$data['breadcrumbs'] = $breadcrumbs;
 
+
 			//Вызов основного отображения
 			$this->load->view('Information',$data);
+
 		}
 
 		$this->load->view('common/footer',$data);
