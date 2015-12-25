@@ -27,7 +27,12 @@ class Contacts extends CI_Controller {
                      'field'   => 'message', 
                      'label'   => 'Текст сообщения', 
                      'rules'   => 'trim|required'
-                  )
+                  ),
+               array(
+                     'field'   => 'g-recaptcha-response', 
+                     'label'   => 'Капча', 
+                     'rules'   => 'callback_recaptcha_check'
+                )
         );
 
         $this->form_validation->set_rules($config);
@@ -103,5 +108,31 @@ class Contacts extends CI_Controller {
         }
 
         $this->load->view('common/footer',$data);
+    }
+
+    //проверка формы обратной связи через Google reCaptcha
+    public function recaptcha_check($value) {
+
+        $google_url="https://www.google.com/recaptcha/api/siteverify";
+        $secret='6LcF2hMTAAAAAFTgZxtPKvMPEXiKE_LnSqunVJFB';
+        $ip=$_SERVER['REMOTE_ADDR'];
+        $url=$google_url."?secret=".$secret."&response=".$value."&remoteip=".$ip;
+
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_TIMEOUT, 10);
+        curl_setopt($curl, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.16) Gecko/20110319 Firefox/3.6.16");
+        $curlData = curl_exec($curl);
+        curl_close($curl);
+        $res=$curlData;
+        $res= json_decode($res, true);
+
+        if($res['success']) {
+            return true;
+        } else {
+            $this->form_validation->set_message('recaptcha_check', 'Ошибка заполнения капчи!');
+            return false;
+        }
     }
 }

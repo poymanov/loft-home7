@@ -40,8 +40,9 @@
 
       <section class="feedback">
         <div class="contacts_title">Свяжитесь с нами</div>
+        <!-- Если была отправка формы и она прошла успешно, то выводим соответствующее общение -->
         <?php if($form_status == 'success') {?>
-            <p>Спасибо за обращение! Сообщение успешно отправлено!</p>
+            <div class="msg-success">Спасибо за обращение! Сообщение успешно отправлено!</div>
         <?php }?>
         <?php echo form_open('contacts'); ?>
             <div class="feedback_form_field">
@@ -50,8 +51,11 @@
                         <input type="text" name="name" placeholder="ФИО" 
                         class="feedback_input" size="25" value="<?php echo set_value('name'); ?>">
                     </div>
+                   
                 </div>
-                 <?php echo form_error('name'); ?>
+                 <div class="msg-error">
+                    <?php echo form_error('name'); ?>
+                </div>
                 <div class="feedback_require_star"></div>
             </div>
             <div class="feedback_form_field">
@@ -68,6 +72,8 @@
                         <input type="text" name="email" placeholder="E-MAIL" 
                         class="feedback_input"  value="<?php echo set_value('email'); ?>">
                     </div>
+                </div>
+                <div class="msg-error">
                     <?php echo form_error('email'); ?>
                 </div>
                 <div class="feedback_require_star"></div>
@@ -75,8 +81,14 @@
             <div class="feedback_form_field">
                 <textarea name="message" class="feedback_massage" 
                 placeholder="Текст сообщения"><?php echo set_value('message'); ?></textarea>
-                <?php echo form_error('message'); ?>
+                <div class="msg-error">
+                    <?php echo form_error('message'); ?>
+                </div>
                 <div class="feedback_require_star"></div>
+            </div>
+            <div class="g-recaptcha" data-sitekey="6LcF2hMTAAAAAPNhInq4_7I_yOiC1iNNBWffNgHx"></div>
+            <div class="msg-error">
+                <?php echo form_error('g-recaptcha-response'); ?>
             </div>
             <div class="feedback_submit_block">
                 <a href="#" class="feedback_submit_btn">Отправить</a>

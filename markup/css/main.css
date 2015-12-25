@@ -3168,3 +3168,18 @@ footer {
 .authorize_popup {
   display: inline-block;
 }
+
+.msg-error {
+  font-size: 11px;
+  color: #ff0000;
+}
+
+.g-recaptcha {
+  margin-bottom: 5px;
+}
+
+.msg-success {
+  color: #325B32;
+  margin-bottom: 15px;
+  font-weight: bold;
+}

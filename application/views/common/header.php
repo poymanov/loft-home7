@@ -17,6 +17,7 @@
 		<link rel="stylesheet" type="text/css" href="<? echo $pathCommon;?>/css/main.css" media="screen, projection, print">
 		<link rel="stylesheet" type="text/css" href="<? echo $pathCommon;?>/css/jquery.bxslider.css" media="screen, projection, print">
 		<script src="<? echo $pathCommon;?>/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+		<script src='https://www.google.com/recaptcha/api.js'></script>
 	</head>
 	<body>
 
