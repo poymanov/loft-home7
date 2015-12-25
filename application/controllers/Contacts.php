@@ -16,12 +16,12 @@ class Contacts extends CI_Controller {
                array(
                      'field'   => 'name', 
                      'label'   => 'ФИО', 
-                     'rules'   => 'trim|required'
+                     'rules'   => 'trim|required|max_length[50]'
                   ),
                array(
                      'field'   => 'email', 
                      'label'   => 'E-mail', 
-                     'rules'   => 'trim|required|valid_email'
+                     'rules'   => 'trim|required|valid_email|max_length[50]'
                   ),
                array(
                      'field'   => 'message', 
@@ -55,7 +55,6 @@ class Contacts extends CI_Controller {
 
             //Если нет ошибок, то отправляем письмо
             mail($emailTo, $subject, $body, $headers);
-            //echo $this->input->post('name');
         }
 
         //Подгружаем модель выбора главного меню
@@ -104,7 +103,7 @@ class Contacts extends CI_Controller {
             $data['breadcrumbs'] = $breadcrumbs;
 
             //Вызов основного отображения
-            $this->load->view('contacts.php',$data);
+            $this->load->view('contacts',$data);
         }
 
         $this->load->view('common/footer',$data);

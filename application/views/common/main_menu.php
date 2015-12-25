@@ -28,6 +28,18 @@
 						</a>
 					</li>
 				<?php } ?>
+				<!-- Кнопки регистрации, входа, входа -->
+				<li>
+						<a href="/reg/" class="nav_link_wrap">
+							<div class="nav_link_triangle">
+								<div class="nav_link_outer">
+									<div class="nav_link_inner">
+										<span>Регистрация</span>
+									</div>
+								</div>
+							</div>
+						</a>
+					</li>
 			</ul>
 		<?php } ?>
 		<!-- Поиск -->
