@@ -28,8 +28,34 @@
 						</a>
 					</li>
 				<?php } ?>
-				<!-- Кнопки регистрации, входа, входа -->
-				<li>
+				<!-- Кнопки регистрации, входа, выхода -->
+
+				<!-- Если пользователь авторизован, показываем только кнопку выхода -->
+				<?php if($this->session->userdata('user_id')) { ?>
+					<li>
+						<a href="/logout/" class="nav_link_wrap">
+							<div class="nav_link_triangle">
+								<div class="nav_link_outer">
+									<div class="nav_link_inner">
+										<span>Выход</span>
+									</div>
+								</div>
+							</div>
+						</a>
+					</li>
+				<?php } else {?>
+					<li>
+						<a href="/login/" class="nav_link_wrap">
+							<div class="nav_link_triangle">
+								<div class="nav_link_outer">
+									<div class="nav_link_inner">
+										<span>Вход</span>
+									</div>
+								</div>
+							</div>
+						</a>
+					</li>
+					<li>
 						<a href="/reg/" class="nav_link_wrap">
 							<div class="nav_link_triangle">
 								<div class="nav_link_outer">
@@ -40,6 +66,7 @@
 							</div>
 						</a>
 					</li>
+				<?php } ?>
 			</ul>
 		<?php } ?>
 		<!-- Поиск -->

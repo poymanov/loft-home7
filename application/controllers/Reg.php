@@ -107,7 +107,7 @@ class Reg extends CI_Controller {
         		'lastname' => $this->input->post('lastname'),
         		'tel' => $this->input->post('tel'),
         		'email' => $this->input->post('email'),
-        		'password' => $this->input->post('password1')
+        		'password' => trim($this->input->post('password1'))
         	);
 
         	//Передача данных для регистрации пользователя
