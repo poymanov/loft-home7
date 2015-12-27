@@ -1,18 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Product extends CI_Controller {
+class Product extends MY_Controller {
 
 	public function view_product($name){
-		//Подгружаем модель выбора главного меню
-		$this->load->model('main_menu');
-		$data['main_menu'] = $this->main_menu->get_menu();
-
-		//Подгружаем модель категорий
-		$this->load->model('categories_model');
-		$categories = $this->categories_model->get_categories();
-		$data['categories'] = $categories;
-
 		//Подгружаем модель товаров
 		$this->load->model('product_model');
 		$product = $this->product_model->get_product_data($name);
@@ -21,12 +12,11 @@ class Product extends CI_Controller {
 		
 		} else {
 			//Параметры представления
-			$data['pathCommon'] = "/markup";
-			$data['title'] = $product['title'];
-			$data['meta_keywords'] = $product['meta_keywords'];
-			$data['meta_description'] = $product['meta_description'];
-			$data['h1'] = $product['h1'];
-			$data['price'] = $product['price'];
+			$this->setData('title',$product['title']);
+			$this->setData('meta_keywords',$product['meta_keywords']);
+			$this->setData('meta_description',$product['meta_description']);
+			$this->setData('h1',$product['h1']);
+			$this->setData('price',$product['price']);
 
 			//Формирование хлебных крошек
 
@@ -40,13 +30,13 @@ class Product extends CI_Controller {
 				'href' => '',
 				'name' => $product['h1']
 			);
-			$data['breadcrumbs'] = $breadcrumbs;
+			$this->setData('breadcrumbs',$breadcrumbs);
 			
 			//Вызов отображений
-			$this->load->view('common/header',$data);
-			$this->load->view('common/main_menu',$data);
-			$this->load->view('product',$data);
-			$this->load->view('common/footer',$data);
+			$this->load->view('common/header',$this->data);
+			$this->load->view('common/main_menu',$this->data);
+			$this->load->view('product',$this->data);
+			$this->load->view('common/footer',$this->data);
 		}
 	}
 }

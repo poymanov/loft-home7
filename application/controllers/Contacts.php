@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Contacts extends CI_Controller {
+class Contacts extends MY_Controller {
 
 	public function index(){
 
@@ -39,9 +39,9 @@ class Contacts extends CI_Controller {
 
         //Проверяем форму и выводим соответствующее сообщение
         if ($this->form_validation->run() == FALSE) {
-            $data['form_status'] = "error";
+            $this->setData('form_status','error');
         } else {
-            $data['form_status'] = "success";
+            $this->setData('form_status','success');
 
             $name = $this->input->post('name');
             $tel = $this->input->post('tel');
@@ -57,38 +57,26 @@ class Contacts extends CI_Controller {
             mail($emailTo, $subject, $body, $headers);
         }
 
-        //Подгружаем модель выбора главного меню
-        $this->load->model('main_menu');
-        $data['main_menu'] = $this->main_menu->get_menu();
-
-        //Подгружаем модель категорий
-        $this->load->model('categories_model');
-        $categories = $this->categories_model->get_categories();
-        $data['categories'] = $categories;
-        
         //Подгружаем модель получения отдельной страницы с информацией
         $this->load->model('information_model');
         $information = $this->information_model->get_information("contacts");
-
-        //Параметры представления
-        $data['pathCommon'] = "/markup";
 
         //Если такой страницы информации нет, выводим содержимое страницы 404
         if(!$information) {
 
         } else {
             //Дополнительные метаданные
-            $data['title'] = $information['title'];
-            $data['meta_keywords'] = $information['meta_keywords'];
-            $data['meta_description'] = $information['meta_description'];
+            $this->setData('title',$information['title']);
+            $this->setData('meta_keywords',$information['meta_keywords']);
+            $this->setData('meta_description',$information['meta_description']);
 
             //Контент страницы
-            $data['h1'] = $information['h1'];
-            $data['text'] = $information['text'];
+            $this->setData('h1',$information['h1']);
+            $this->setData('text',$information['text']);
 
             //Вызов базовых отображений
-            $this->load->view('common/header',$data);
-            $this->load->view('common/main_menu',$data);
+            $this->load->view('common/header',$this->data);
+            $this->load->view('common/main_menu',$this->data);
 
             //Формирование хлебных крошек для страницы
             $breadcrumbs = array();
@@ -100,13 +88,13 @@ class Contacts extends CI_Controller {
                 'href' => '',
                 'name' => $information['h1']
             );
-            $data['breadcrumbs'] = $breadcrumbs;
+            $this->setData('breadcrumbs',$breadcrumbs);
 
             //Вызов основного отображения
-            $this->load->view('contacts',$data);
+            $this->load->view('contacts',$this->data);
         }
 
-        $this->load->view('common/footer',$data);
+        $this->load->view('common/footer',$this->data);
     }
 
     //проверка формы обратной связи через Google reCaptcha

@@ -1,21 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Catalog extends CI_Controller {
+class Catalog extends MY_Controller {
 
 	public function view_category($name,$page = 0){
-
-		//Параметры представления
-		$data['pathCommon'] = "/markup";
-
-		//Подгружаем модель выбора главного меню
-		$this->load->model('main_menu');
-		$data['main_menu'] = $this->main_menu->get_menu();
-
-		//Подгружаем модель категорий
-		$this->load->model('categories_model');
-		$categories = $this->categories_model->get_categories();
-		$data['categories'] = $categories;
 
 		//Полученаем информацию по отдельной категории
 		$category = $this->categories_model->get_category_info($name);
@@ -49,19 +37,19 @@ class Catalog extends CI_Controller {
 		//Получаем товары по категории
 		$products = $this->categories_model->get_category_products($category['id'],$config["per_page"],$page);
 
-		$data['products'] = $products;
+		$this->setData('products',$products);
 
 		//Если нет такой категории, выводим содержимое страницы 404
 		if(!$category) {
 
 		} else {
 			//Дополнительные метаданные
-			$data['title'] = $category['title'];
-			$data['meta_keywords'] = $category['meta_keywords'];
-			$data['meta_description'] = $category['meta_description'];
+			$this->setData('title',$category['title']);
+			$this->setData('meta_keywords',$category['meta_keywords']);
+			$this->setData('meta_description',$category['meta_description']);
 
 			//Контент страницы
-			$data['h1'] = $category['title'];
+			$this->setData('h1', $category['title']);
 
 			//Формирование хлебных крошек для страницы
 			$breadcrumbs = array();
@@ -73,15 +61,13 @@ class Catalog extends CI_Controller {
 				'href' => '',
 				'name' => $category['title']
 			);
-			$data['breadcrumbs'] = $breadcrumbs;
+			$this->setData('breadcrumbs',$breadcrumbs);
 
 			//Вызов отображений
-			$this->load->view('common/header',$data);
-			$this->load->view('common/main_menu',$data);
-			$this->load->view('catalog',$data);
-			$this->load->view('common/footer',$data);
+			$this->load->view('common/header',$this->data);
+			$this->load->view('common/main_menu',$this->data);
+			$this->load->view('catalog',$this->data);
+			$this->load->view('common/footer',$this->data);
 		}
-
-
 	}
 }

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Reg extends CI_Controller {
+class Reg extends MY_Controller {
 
 	function __construct(){
         parent::__construct();
@@ -18,25 +18,13 @@ class Reg extends CI_Controller {
 		//Подгружаем нужные библиотеки
 		$this->load->helper(array('form'));
 
-		//Параметры представления
-		$data['pathCommon'] = "/markup";
-
-		//Подгружаем модель выбора главного меню
-		$this->load->model('main_menu');
-		$data['main_menu'] = $this->main_menu->get_menu();
-
-		//Подгружаем модель категорий
-		$this->load->model('categories_model');
-		$categories = $this->categories_model->get_categories();
-		$data['categories'] = $categories;
-
 		//Дополнительные метаданные
-		$data['title'] = 'Регистрация';
-		$data['meta_keywords'] = 'Регистрация';
-		$data['meta_description'] = 'Регистрация';
+		$this->setData('title','Регистрация');
+		$this->setData('meta_keywords','Регистрация');
+		$this->setData('meta_description','Регистрация');
 
 		//Контент страницы
-		$data['h1'] = 'Регистрация';
+		$this->setData('h1','Регистрация');
 
 		//Формирование хлебных крошек для страницы
 		$breadcrumbs = array();
@@ -48,11 +36,11 @@ class Reg extends CI_Controller {
 			'href' => '',
 			'name' => 'Регистрация'
 		);
-		$data['breadcrumbs'] = $breadcrumbs;
+		$this->setData('breadcrumbs',$breadcrumbs);
 
 		//Вызов отображений
-		$this->load->view('common/header',$data);
-		$this->load->view('common/main_menu',$data);
+		$this->load->view('common/header',$this->data);
+		$this->load->view('common/main_menu',$this->data);
 
 		//Проверяем форму на ошибки
 
@@ -99,7 +87,7 @@ class Reg extends CI_Controller {
 
         //Если проверка не прошла выводим форму
         if ($this->form_validation->run() == FALSE) {
-        	$this->load->view('reg',$data);
+        	$this->load->view('reg',$this->data);
         } else {
         	//Сбор данных для регистрации нового пользователя
         	$userArr = array(
@@ -114,11 +102,11 @@ class Reg extends CI_Controller {
         	$this->reg_model->reg_user($userArr);
 
         	//Вывод сообщения об успешной регистрации
-        	$data['user_email'] = $this->input->post('email');
-        	$this->load->view('reg-success',$data);
+        	$this->setData('user_email',$this->input->post('email'));
+        	$this->load->view('reg-success',$this->data);
         }
 
-		$this->load->view('common/footer',$data);
+		$this->load->view('common/footer',$this->data);
 	}
 
 	//проверка формы обратной связи через Google reCaptcha
