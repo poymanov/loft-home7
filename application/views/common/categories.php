@@ -11,7 +11,7 @@
 				<?php } ?>
 		            <div class="categories_list_item">
 		                <div class="categories_item_title">
-		                    <a class="categories_nonclickable" href="/catalog/<?php echo $category['href'];?>">
+		                    <a href="/catalog/<?php echo $category['href'];?>">
 		                        <span><?php echo $category['title'];?></span>
 		                    </a>
 		                </div>

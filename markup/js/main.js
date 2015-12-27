@@ -198,22 +198,29 @@ $(document).ready(function(){
     });
 
 
-    $('.categories_item_title a').on('click', function(){
-        $('.just_clicked').removeClass('just_clicked');
-        $('.categories_sublist_popup').hide();
+    // $('.categories_item_title a').on('click', function(){
+    //     $('.just_clicked').removeClass('just_clicked');
+    //     $('.categories_sublist_popup').hide();
 
-        accordeon($(this));
+    //     accordeon($(this));
 
-        if (!$(this).parent().hasClass('opened')) {
-            $(this).closest('ul').find('.categories_item_title.opened').removeClass('opened');
-            $(this).parent().addClass('opened');
-            
-        } else {
-            $(this).parent().removeClass('opened');
+    //     if (!$(this).parent().hasClass('opened')) {
+    //         $(this).closest('ul').find('.categories_item_title.opened').removeClass('opened');
+    //         $(this).parent().addClass('opened');
+    //     } else {
+    //         $(this).parent().removeClass('opened');
+    //     }
+
+    //     return false;
+
+    // });
+    
+    $('.categories_item_title a').on('click', function(event) {
+        var acrContent = $(this).closest('.categories_list_item').find('.accordeon_content');
+        if(acrContent.length > 0) {
+            acrContent.slideToggle('fast');
+            event.preventDefault();
         }
-
-        return false;
-
     });
 
     $('.accordeon_list > li.open_as_default').addClass('active')
@@ -405,29 +412,31 @@ $(document).ready(function(){
     $('.categories_item_sublist > li > .categories_sublist_inner > .categories_inner_title').on('click', function(){
         var popUp = $(this).closest('li').find('.categories_sublist_popup');
 
-        if(!$(this).hasClass('just_clicked')) {
+        if(popUp.length > 0) {
+            if(!$(this).hasClass('just_clicked')) {
 
-            if (window.navigator.userAgent.indexOf('MSIE 8.0') < 0) {
-                $('.categories_sublist_popup').stop(true, true).fadeOut();
-                popUp.stop(true, true).fadeIn();
+                if (window.navigator.userAgent.indexOf('MSIE 8.0') < 0) {
+                    $('.categories_sublist_popup').stop(true, true).fadeOut();
+                    popUp.stop(true, true).fadeIn();
+                } else {
+                    // для ИЕ8, баги со всплывашкой
+                    $('.categories_sublist_popup').stop(true, true).hide();
+                    popUp.stop(true, true).show();
+                }
+
+                $(this).addClass('just_clicked');
             } else {
-                // для ИЕ8, баги со всплывашкой
-                $('.categories_sublist_popup').stop(true, true).hide();
-                popUp.stop(true, true).show();
+
+                if (window.navigator.userAgent.indexOf('MSIE 8.0') < 0) {
+                    popUp.stop(true, true).fadeOut();
+                } else {
+                    popUp.stop(true, true).hide();
+                }
+                $(this).removeClass('just_clicked');
             }
 
-            $(this).addClass('just_clicked');
-        } else {
-
-            if (window.navigator.userAgent.indexOf('MSIE 8.0') < 0) {
-                popUp.stop(true, true).fadeOut();
-            } else {
-                popUp.stop(true, true).hide();
-            }
-            $(this).removeClass('just_clicked');
+            return false;
         }
-
-        return false;
     });
 
 
