@@ -57,5 +57,8 @@ $route['catalog/(:any)'] = 'catalog/view_category/$1';
 $route['information/contacts'] = 'contacts';
 $route['information/(:any)'] = 'information/display_information/$1';
 $route['default_controller'] = 'main';
+// для административной части
+$route['admin'] = 'admin/main_admin';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
