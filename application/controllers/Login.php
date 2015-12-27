@@ -29,9 +29,6 @@ class Login extends MY_Controller {
 		);
 		$this->setData('breadcrumbs',$breadcrumbs);
 
-        //Если пользователь авторизован, то не нужно отображать форму авторизации
-		$this->setData('user_id',$this->session->userdata('user_id'));
-
 		//Правила валидации формы
         $config = array(
                array(

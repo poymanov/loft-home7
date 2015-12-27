@@ -622,6 +622,17 @@ $(document).ready(function() {
         url += "/"+qty+"/";
         $(location).attr('href',url);
     });
+
+    //Переключение табов на странице корзины
+    $('.tabs__link').on('click', function(event) {
+        event.preventDefault();
+        $('.tabs__item').removeClass('tabs__item-active');
+        $(this).closest('.tabs__item').addClass('tabs__item-active');
+
+        var blockId = $(this).attr('href');
+        $('.tabs-content__item').css('display', 'none');
+        $(blockId).css('display', 'block');
+    });
 });
 
 

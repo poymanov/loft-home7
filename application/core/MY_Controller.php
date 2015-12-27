@@ -18,6 +18,9 @@ class MY_Controller extends CI_Controller{
 		$this->load->model('categories_model');
 		$categories = $this->categories_model->get_categories();
 		$this->setData('categories',$categories);
+
+        //id текущего авторизованного пользователя
+        $this->setData('user_id',$this->session->userdata('user_id'));
     }
 
     protected function setData($key, $value){

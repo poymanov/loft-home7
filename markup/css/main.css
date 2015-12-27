@@ -3231,7 +3231,56 @@ footer {
   background: url(../img/icons/cart-update.png);
 }
 
+/*Табы на странице корзины*/
+
+.tabs__list {
+  font-size: 0;
+  margin-bottom: 15px;
+}
+
+.tabs__item {
+  display: inline-block;
+}
+
+.tabs__item-active .tabs__link{
+  border-bottom: 3px solid #fb8a31;
+  padding-bottom: 3px;
+}
+
+.tabs-content__item {
+  display: none;
+}
+
+#tab_one {
+  display: block;
+}
+
+.delivery_methods__list{
+  margin-top: 10px;
+}
+
+.payments_methods__list {
+  margin-top: 10px;
+}
+
+.checkout__header {
+  font-weight: bold;
+}
+
+.delivery {
+  float: left;
+}
+
+.payments {
+  float: right;
+}
+
+.feedback_submit_btn {
+  border: 0;
+}
+
 /* Корзина товаров КОНЕЦ */
+
 
 /*стили для админки */
 

@@ -42,7 +42,7 @@
 					</a>
 				</li>
 				<!-- Если пользователь авторизован, показываем только кнопку выхода -->
-				<?php if($this->session->userdata('user_id')) { ?>
+				<?php if($user_id) { ?>
 					<li>
 						<a href="/logout/" class="nav_link_wrap">
 							<div class="nav_link_triangle">
