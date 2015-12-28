@@ -1,6 +1,42 @@
 <div class="content_area">
     <div class="content_area_right">
         <?php include 'common/categories.php';?>
+        <!-- Форма с фильтрами отбора -->
+        <div class="category-filters">
+            <div class="categories_title">Фильтры</div>
+            <form method="get">
+                <?php if($subcategories) {?>
+                    <div class="category-filters__wrapper">
+                        <label class="category-filters__label">Подкатегории:</label>
+                        <select name="subcategory">
+                            <?php foreach ($subcategories as $subcategory) { ?>
+                                <option value="<?php echo $subcategory['id'];?>">
+                                    <?php echo $subcategory['title'];?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                <?php } ?>
+                <?php if($manucturers) {?>
+                    <div class="category-filters__wrapper">
+                        <label class="category-filters__label">Производитель:</label>
+                        <select name="manufacturer">
+                            <?php foreach ($manucturers as $man) { ?>
+                                <option value="<?php echo $man['id'];?>">
+                                    <?php echo $man['name'];?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                <?php } ?>
+                <div class="category-filters__wrapper">
+                    <label class="category-filters__label">Цена:</label>
+                        от <input type="text" name="price1" class="category-filters__price-input">
+                        до <input type="text" name="price2" class="category-filters__price-input">
+                </div>
+                <input type="submit" class="feedback_submit_btn" value="Показать">
+            </form>
+        </div>
         <?php include 'common/sale.php';?>
     </div>
     <div class="content_area_left">

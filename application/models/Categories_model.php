@@ -36,9 +36,31 @@ class Categories_model extends CI_Model {
         return $query->row_array();
     }
 
-    public function get_category_products($id,$limit,$start) {
+    public function get_category_products($id,$limit,$start,$filters) {
+
+        $arrCategories = array();
+        $arrCategories[] = $id;
+
+    
         //1) Получаем id продуктов по категории
-        $query = $this->db->select('product_id')->get_where('products_categories',array('category_id'=>$id));
+        $query = $this->db->select('product_id');
+        
+
+        //Если были фильтры и есть фильтр по категории
+        //то отбираем товары по категории с фильтром
+        //иначе по общей категории
+        if($filters) {
+            if($filters['subcategory']) {
+                $cat_id = $filters['subcategory'];
+            } else {
+                $cat_id = $id;
+            }
+        } else {
+            $cat_id = $id;
+        }
+
+        $query = $query->where('category_id',$cat_id);
+        $query = $query->get('products_categories');
         $products = $query->result_array();
 
         //2) Собираем все id продуктов в простой массив
@@ -49,7 +71,22 @@ class Categories_model extends CI_Model {
 
         if($idArray) {
             //3) По id продуктов получаем остальные данные по каждому из продуктов
-            $query = $this->db->select('name,title,image')->limit($limit, $start)->where_in('id',$idArray)->get('products');
+            $query = $this->db->select('name,title,image')->limit($limit, $start);
+            $query = $query->where_in('id',$idArray);
+            if($filters) {
+                 if($filters['manufacturer']) {
+                    $query = $query->where('manufacturer_id',$filters['manufacturer']);
+                 }
+
+                 if($filters['price1']) {
+                    $query = $query->where('price>',$filters['price1']);
+                 }
+
+                 if($filters['price2']) {
+                    $query = $query->where('price<',$filters['price2']);
+                 }
+            }
+            $query = $query->get('products');
             $arrQuery = $query->result_array();
             return $arrQuery;
         } else {
@@ -62,6 +99,26 @@ class Categories_model extends CI_Model {
     public function count_category_products($id) {
         $query = $this->db->select('product_id')->where('category_id',$id)->count_all_results('products_categories');
         return $query;
+    }
+
+    public function get_manufacturers() {
+        $query = $this->db->get('manufacturers');
+        return $query->result_array();
+    }
+
+    public function get_subcategories($id) {
+        $query = $this->db->select('id,title')->get_where('categories',array('parent_id'=>$id));
+        return $query->result_array();
+    }
+
+    public function get_manufacturer_name($id){
+        $query = $this->db->select('name')->get_where('manufacturers',array('id'=>$id));
+        return $query->row_array();
+    }
+
+    public function get_category_name($id){
+        $query = $this->db->select('title')->get_where('categories',array('id'=>$id));
+        return $query->row_array();
     }
 
     protected function get_categories_childrens($categoryItem,$arrQuery) {

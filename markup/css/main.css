@@ -1033,7 +1033,7 @@ footer {
   position: relative;
 }
 .categories {
-  margin-bottom: 50px;
+  margin-bottom: 15px;
 }
 .categories_popup_list > li {
   padding-right: 16px;
@@ -3279,8 +3279,25 @@ footer {
   border: 0;
 }
 
-/* Корзина товаров КОНЕЦ */
+/* Фильтры для категорий */
 
+.category-filters {
+  margin-bottom: 15px;
+}
+
+.category-filters__label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.category-filters__wrapper {
+  margin-bottom: 15px;
+}
+
+.category-filters__price-input {
+  width: 50px;
+}
 
 /*стили для админки */
 

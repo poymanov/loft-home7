@@ -8,6 +8,16 @@ class Catalog extends MY_Controller {
 		//Полученаем информацию по отдельной категории
 		$category = $this->categories_model->get_category_info($name);
 		
+		//Получаем данные для фильтров
+
+		//Производитель
+		$manucturers = $this->categories_model->get_manufacturers();
+		$this->setData('manucturers',$manucturers);
+
+		//Вложенные подкатегории для категории
+		$subcategories = $this->categories_model->get_subcategories($category['id']);
+		$this->setData('subcategories',$subcategories);
+
 		//Подключаем библиотеку пагинации
 		$this->load->library('pagination');
 
@@ -34,8 +44,13 @@ class Catalog extends MY_Controller {
 			$page = ($this->uri->segment(3)) ? $this->uri->segment(2) : 0;
 		}
 
+		//Если у нас был get-запрос, то получаем дополнительные фильтры
+		//для отбора товаров
+
+		$get = $this->input->get();
+
 		//Получаем товары по категории
-		$products = $this->categories_model->get_category_products($category['id'],$config["per_page"],$page);
+		$products = $this->categories_model->get_category_products($category['id'],$config["per_page"],$page,$get);
 
 		$this->setData('products',$products);
 
@@ -49,7 +64,33 @@ class Catalog extends MY_Controller {
 			$this->setData('meta_description',$category['meta_description']);
 
 			//Контент страницы
-			$this->setData('h1', $category['title']);
+
+			//Если у нас были зайдествованы фильтры, 
+			//то отображем их в заголовке страницы
+
+			$h1 = $category['title'];
+
+			if($get) {
+				$h1 .= ":<br>";
+				if($get['subcategory']) {
+					$filter_category = $this->categories_model->get_category_name($get['subcategory']);
+					$h1 .= $filter_category['title']."<br>";
+				}
+				if($get['manufacturer']) {
+					$filter_manufacturer = $this->categories_model->get_manufacturer_name($get['manufacturer']);
+					$h1 .= $filter_manufacturer['name']."<br>";
+				}
+
+				if($get['price1']) {
+					$h1 .= "от ".$get['price1']."<br>";
+				}
+
+				if($get['price2']) {
+					$h1 .= "до ".$get['price2']."<br>";
+				}
+			}
+
+			$this->setData('h1',$h1);
 
 			//Формирование хлебных крошек для страницы
 			$breadcrumbs = array();
