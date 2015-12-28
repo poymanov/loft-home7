@@ -121,10 +121,18 @@
                         </li>
                     </ul>
                     <div class="category_buy_counter">
-                        <form action="">
+                        <form class="product_add_cart">
                             <div class="text_input">
                                 <div class="text_input_wrap">
-                                    <input class="category_count_input" type="text"/>
+                                    <!-- Скрытые поля для данных о товаре -->
+                                    <?php echo form_hidden('product_id', $product_id);?>
+                                    <?php echo form_hidden('name', $h1);?>
+                                    <?php echo form_hidden('price', $price);?>
+                                    <?php echo form_hidden('alias', $alias);?>
+                                    <?php 
+                                    $data = array('name' => 'qty','type'=> 'text','value' => '1','class' => 'category_count_input');
+                                        echo form_input($data);
+                                    ?>
                                 </div>
                             </div>
 

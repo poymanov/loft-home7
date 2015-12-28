@@ -589,6 +589,39 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+$(document).ready(function() {
+    //Добавление в корзину из карточки товара
+    $('.product_add_cart').on('submit', function(event) {
+        event.preventDefault();
+        var m_method="post";
+        var m_action="/cart/add";
+        var m_data=$(this).serialize();
+        $.ajax({
+            type: m_method,
+            url: m_action,
+            data: m_data,
+            success: function(result){
+                var totalQty = result['totalQty'];
+                alert("Товар добавлен в корзину");
+                // Обновляем информацию о состоянии корзины
+                $('.main-menu__cart').html("Корзина ("+totalQty+")");
+            }
+        });
+    });
 
+    //Обновление товара в корзине
+    $('.cart__update').on('click', function(event) {
+        event.preventDefault();
+        
+        //Собираем путь для переадресации в контроллер
+        var url = $(this).attr('href');
+
+        //Получаем количество товара в текущей строчке строчке
+        var qty = $(this).closest('.cart__td').find('.cart__input').attr('value');
+        //Присоединяем количество к текущему url
+        url += "/"+qty+"/";
+        $(location).attr('href',url);
+    });
+});
 
 

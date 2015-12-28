@@ -28,8 +28,19 @@
 						</a>
 					</li>
 				<?php } ?>
-				<!-- Кнопки регистрации, входа, выхода -->
-
+				<!-- Кнопки регистрации, входа, выхода и корзины-->
+				<!-- Корзина -->
+				<li>
+					<a href="/cart/" class="nav_link_wrap">
+						<div class="nav_link_triangle">
+							<div class="nav_link_outer">
+								<div class="nav_link_inner">
+									<span class="main-menu__cart">Корзина (<?php echo $this->cart->total_items();?>)</span>
+								</div>
+							</div>
+						</div>
+					</a>
+				</li>
 				<!-- Если пользователь авторизован, показываем только кнопку выхода -->
 				<?php if($this->session->userdata('user_id')) { ?>
 					<li>
@@ -70,7 +81,7 @@
 			</ul>
 		<?php } ?>
 		<!-- Поиск -->
-		<div class="search">
+		<!-- <div class="search">
 			<form action="">
 				<div class="search_input_wrap">
 					<div class="input_text">
@@ -82,6 +93,6 @@
 				</div>
 				<input class="search_submit" type="submit" value="">
 			</form>
-		</div>
+		</div> -->
 	</nav>
 </section>

@@ -6,6 +6,7 @@ class Product extends MY_Controller {
 	public function view_product($name){
 		//Подгружаем модель товаров
 		$this->load->model('product_model');
+		$this->load->helper('form');
 		$product = $this->product_model->get_product_data($name);
 
 		if(!$product) {
@@ -17,6 +18,8 @@ class Product extends MY_Controller {
 			$this->setData('meta_description',$product['meta_description']);
 			$this->setData('h1',$product['h1']);
 			$this->setData('price',$product['price']);
+			$this->setData('product_id',$product['id']);
+			$this->setData('alias',$product['name']);
 
 			//Формирование хлебных крошек
 
