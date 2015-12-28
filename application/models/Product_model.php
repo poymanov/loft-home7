@@ -8,5 +8,10 @@ class Product_model extends CI_Model {
 	   return $query->row_array();
 	}
 
+	public function get_manufacturer($id) {
+		$query = $this->db->select('name')->get_where("manufacturers",array('id'=>$id));
+		return $query->row_array();
+	}
+
 
 }

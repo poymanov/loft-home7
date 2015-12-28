@@ -25,84 +25,17 @@
             <div class="item_left">
                 <div class="item_card_view">
                     <div class="category_list_show">
-                        <a href="#fancy" class="category_show_full">
+                        <a href="#" class="category_show_full">
                             <div class="category_full_wrap">
-                                <img src="<?php echo $pathCommon;?>/img/content/big_executor.png" alt=""/>
+                                <img src="<?php echo $pathCommon.$image;?>" alt=""/>
                             </div>
                             <div class="category_full_mask"></div>
                         </a>
-                        <div class="category_show_mini">
-                            <ul class="category_mini_list">
-                                <li>
-                                    <a class="category_mini_item" href="#">
-                                        <div class="category_mini_wrap">
-                                            <img src="<?php echo $pathCommon;?>/img/content/vegetable_exterminator.png" alt=""/>
-                                        </div>
-                                        <div class="category_mini_mask"></div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="category_mini_item" href="#">
-                                        <div class="category_mini_wrap">
-                                            <img src="<?php echo $pathCommon;?>/img/content/vegetable_exterminator.png" alt=""/>
-                                        </div>
-                                        <div class="category_mini_mask"></div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="category_mini_item" href="#">
-                                        <div class="category_mini_wrap">
-                                            <img src="<?php echo $pathCommon;?>/img/content/vegetable_exterminator.png" alt=""/>
-                                        </div>
-                                        <div class="category_mini_mask"></div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
-                </div>
-                <div class="category_order_rating">
-                    <div class="category_rating_title">На складе:</div>
-                    <ul class="category_rating_count">
-                        <li class="filled"></li>
-                        <li class="filled"></li>
-                        <li class="filled"></li>
-                        <li class="filled"></li>
-                        <li class="filled"></li>
-                        <li class="filled"></li>
-                        <li class="filled"></li>
-                        <li class="filled"></li>
-                    </ul>
-                    <div class="category_rating_amount"></div>
                 </div>
             </div>
             <div class="item_right">
                 <div class="item_options">
-                    <div class="item_colors">
-                        <div class="item_colors_title">Цвет:</div>
-                        <ul class="item_colors_list">
-                            <li class="white ">
-                                <a href="<?php echo $pathCommon;?>/img/content/vegetable_exterminator.png">
-                                    <span></span>
-                                </a>
-                            </li>
-                            <li class="black active">
-                                <a href="<?php echo $pathCommon;?>/img/content/vegetable_exterminator.png">
-                                    <span></span>
-                                </a>
-                            </li>
-                            <li class="orange">
-                                <a href="<?php echo $pathCommon;?>/img/content/vegetable_exterminator.png">
-                                    <span></span>
-                                </a>
-                            </li>
-                            <li class="grey">
-                                <a href="<?php echo $pathCommon;?>/img/content/vegetable_exterminator.png">
-                                    <span></span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                     <ul class="item_counts">
                         <li>
                             <div class="item_counts_price">
@@ -111,12 +44,10 @@
                         </li>
                         <li>
                             <div class="item_counts_code">
-                                Код товара: <span>440-076</span>
+                                Код товара: <strong><?php echo $sku;?></strong>
                             </div>
-                        </li>
-                        <li>
-                            <div class="item_counts_amount">
-                                Количество в упаковке: <span>6</span>
+                            <div class="item_counts_code">
+                                Производитель: <strong><?php echo $manufacturer;?></strong>
                             </div>
                         </li>
                     </ul>
@@ -144,69 +75,8 @@
                 <div class="item_properties">
                     <ul class="item_prop_list">
                         <li>
-                            <div class="item_prop_title">Параметры</div>
-                            <ul class="item_prop_options">
-                                <li>
-                                    <span class="item_option_title">Вес</span>
-                                    <span class="item_options_content">5 кг</span>
-                                </li>
-                                <li>
-                                    <span class="item_option_title">Габариты</span>
-                                    <span class="item_options_content">120х30х150 мм</span>
-                                </li>
-                                <li>
-                                    <span class="item_option_title">Рабочий объем колбы</span>
-                                    <span class="item_options_content">12 л</span>
-                                </li>
-                                <li>
-                                    <span class="item_option_title">Максимальная можность</span>
-                                    <span class="item_options_content">400 Вт</span>
-                                </li>
-                                <li>
-                                    <span class="item_option_title">Электропитание</span>
-                                    <span class="item_options_content">220 В, 50 Гц</span>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
                             <div class="item_prop_title">Описание</div>
-                            <ul class="item_prop_options">
-                                <li>
-                                    Колба-духовка из жаропрочного стекла
-                                </li>
-                                <li>
-                                    Колба-духовка из жаропрочного стекла
-                                </li>
-                                <li>
-                                    Автоматическое включение и отключение при опускании и поднятии крышки
-                                </li>
-                                <li>
-                                    Электронная панель управления
-                                </li>
-                                <li>
-                                    Колба-духовка из жаропрочного стекла
-                                </li>
-                                <li>
-                                    Колба-духовка из жаропрочного стекла
-                                </li>
-                                <li>
-                                    Колба-духовка из жаропрочного стекла
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <div class="item_prop_title">Аксессуары</div>
-                            <ul class="item_prop_options">
-                                <li>
-                                    Колба-духовка из жаропрочного стекла
-                                </li>
-                                <li>
-                                    Колба-духовка из жаропрочного стекла
-                                </li>
-                                <li>
-                                    Электронная панель управления
-                                </li>
-                            </ul>
+                            <ul class="item_prop_options"><?php echo $description;?></ul>
                         </li>
                     </ul>
                 </div>

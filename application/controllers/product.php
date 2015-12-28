@@ -18,8 +18,16 @@ class Product extends MY_Controller {
 			$this->setData('meta_description',$product['meta_description']);
 			$this->setData('h1',$product['h1']);
 			$this->setData('price',$product['price']);
+			$this->setData('description',$product['description']);
+			$this->setData('image',$product['image']);
 			$this->setData('product_id',$product['id']);
+			$this->setData('sku',$product['sku']);
 			$this->setData('alias',$product['name']);
+
+			$manufacturer = $this->product_model->get_manufacturer($product['manufacturer_id']);
+	
+			//Получаем наименование производителя для вывода
+			$this->setData('manufacturer',$manufacturer['name']);
 
 			//Формирование хлебных крошек
 

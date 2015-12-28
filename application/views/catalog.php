@@ -27,7 +27,7 @@
                     <li>
                         <a href="/product/<?php echo $product['name'];?>">
                             <div class="products_img">
-                                <img src="<?php echo $pathCommon;?>/img/content/prod_1.png" alt="">
+                                <img src="<?php echo $pathCommon.$product['image'];?>" alt="">
                             </div>
                             <div class="products_title">
                                 <span><?php echo $product['title'];?></span>
