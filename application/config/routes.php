@@ -62,6 +62,7 @@ $route['default_controller'] = 'main';
 // для административной части
 $route['admin'] = 'admin/main_admin';
 $route['admin/users'] = 'admin/users_admin';
+$route['admin/users/edituser'] = 'admin/users_admin/edituser';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

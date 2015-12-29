@@ -40,8 +40,10 @@
 
                             ?>
                         </td>
-                        <td><a href="#">Редактировать</a></td>
-                        <td><a href="/admin/users/?del=yes&id=<?php echo $user['id'] ?>">Удалить</a></td>
+                        <td><a href="/admin/users/edituser/?id=<?php echo $user['id']?>">Редактировать</a></td>
+                        <td>
+                            <?if($user['users_group']==2){echo "<a href='/admin/users/?action=deluser&id=".$user['id']."'>Удалить</a>";}?>
+                        </td>
                     </tr>
                 <?php endforeach ?>
             </table>
