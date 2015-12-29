@@ -10,7 +10,6 @@ class Main_admin extends MY_Controller{
 
         //Вызов отображений
         $this->load->view('admin/common/header',$this->data);
-        $this->load->view('admin/common/main_menu',$this->data);
         $this->load->view('admin/index',$this->data);
         $this->load->view('admin/common/footer',$this->data);
     }
