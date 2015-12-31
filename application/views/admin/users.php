@@ -6,9 +6,6 @@
                     <li>Удалить пользователя.</li>
                 </ul>
             </div>
-            <!-- Сообщение о успешном удаление пользователя -->
-            <?if(isset($message)) {echo "<div class='alert alert-success'>".$message."</div>";}?>
-
             <table class="table table-striped table-bordered table-hover table-condensed">
                 <thead>
                 <tr class="info">

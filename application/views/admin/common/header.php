@@ -28,7 +28,7 @@
                 <!--Пункты меню-->
                 <ul class="nav nav-sidebar">
                     <li><a href="/admin/users">Пользователи</a></li>
-                    <li><a href="">Заказы</a></li>
+                    <li><a href="/admin/orders">Заказы</a></li>
                 </ul>
                 <ul class="nav nav-sidebar">
                     <li><a href="">Категории каталога</a></li>

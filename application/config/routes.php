@@ -63,6 +63,7 @@ $route['default_controller'] = 'main';
 $route['admin'] = 'admin/main_admin';
 $route['admin/users'] = 'admin/users_admin';
 $route['admin/users/edituser'] = 'admin/users_admin/edituser';
+$route['admin/orders'] = 'admin/orders_admin';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
