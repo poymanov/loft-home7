@@ -62,7 +62,7 @@
                     </div>
                     <div class="feedback_submit_block">
                         <a href="#" class="feedback_submit_btn">Войти</a>
-                        <input type="submit">
+                        <input name="submit" type="submit">
                     </div>
                 </form>
             </section>
