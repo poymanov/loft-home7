@@ -24,7 +24,7 @@
                         <td><?php echo $user['id'] ?></td>
                         <td><?php echo 'Имя: '.$user['name'].' '.$user['lastname'].'<br/>Телефон: '.$user['tel']
                             .'<br/>Email: '.$user['email'] ?></td>
-                        <td><?php echo $user['users_group'] ?></td>
+                        <td><?php echo $user['groupUser'] ?></td>
                         <td><?php echo $user['date_reg'] ?></td>
                         <td>
                             <?php

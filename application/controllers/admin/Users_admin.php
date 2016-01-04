@@ -22,7 +22,26 @@ class Users_admin extends MY_Controller{
         else {
             //Параметры представления
             $this->setData('title', 'Пользователи сайта');
-            $this->setData ('users',$this->MY_model->get_all('users'));
+
+            //Вывод всех заказов
+            $sql = "SELECT
+            users.id,
+            users.name,
+            users.lastname,
+            users.tel,
+            users.email,
+            users.password,
+            users.date_reg,
+            users.is_activated,
+            users.users_group,
+            users_groups.name as groupUser
+            FROM
+            users
+            INNER JOIN users_groups ON users_groups.id = users.users_group";
+
+            //Вывод всех пользователей
+            $this->setData ('users',$this->MY_model->get($sql));
+
             //Вызов отображений
             $this->load->view('admin/common/header',$this->data);
             $this->load->view('admin/users',$this->data);
@@ -61,7 +80,7 @@ class Users_admin extends MY_Controller{
         }
         else {
             $id = $this->input->get('id');
-            $this->setData ('user',$this->MY_model->getOnen($id,'users'));
+            $this->setData ('user',$this->MY_model->getOne($id,'users'));
             //Вызов отображений
             $this->load->view('admin/common/header',$this->data);
             $this->load->view('admin/edituser',$this->data);

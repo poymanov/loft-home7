@@ -7,20 +7,30 @@ class My_Model extends CI_Model{
     {
         $this->load->database();
     }
+    //Запрос
+    public function get($sql) {
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+    //Ввывод всех данных из таблицы
     public function get_all($tableName) {
         $query = $this->db->get($tableName);
         return $query->result_array();
     }
+    //Удаление строки из таблицы по ID
     public function del($id,$tableName) {
         $this->db->delete($tableName,array('id'=>$id));
     }
-    public function getOnen($id,$tableName) {
+    //Получение данных по ID
+    public function getOne($id,$tableName) {
         $query = $this->db->get_where($tableName, array('id' => $id));
         return $query->result_array();
     }
+    //Изменение данных по ID
     public function update($id,$data,$tableName) {
         $this->db->where('id', $id);
         $this->db->update($tableName, $data);
     }
+
 }
 
