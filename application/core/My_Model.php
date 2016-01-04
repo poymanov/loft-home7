@@ -22,7 +22,7 @@ class My_Model extends CI_Model{
         $this->db->delete($tableName,array('id'=>$id));
     }
     //Получение данных по ID
-    public function getOne($id,$tableName) {
+    public function getWhere($id,$tableName) {
         $query = $this->db->get_where($tableName, array('id' => $id));
         return $query->result_array();
     }

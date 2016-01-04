@@ -23,7 +23,7 @@ class Users_admin extends MY_Controller{
             //Параметры представления
             $this->setData('title', 'Пользователи сайта');
 
-            //Вывод всех заказов
+            //Вывод всех пользователей
             $sql = "SELECT
             users.id,
             users.name,
@@ -80,7 +80,7 @@ class Users_admin extends MY_Controller{
         }
         else {
             $id = $this->input->get('id');
-            $this->setData ('user',$this->MY_model->getOne($id,'users'));
+            $this->setData ('user',$this->MY_model->getWhere($id,'users'));
             //Вызов отображений
             $this->load->view('admin/common/header',$this->data);
             $this->load->view('admin/edituser',$this->data);
