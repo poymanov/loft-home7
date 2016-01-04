@@ -31,7 +31,7 @@
                     <li><a href="/admin/orders">Заказы</a></li>
                 </ul>
                 <ul class="nav nav-sidebar">
-                    <li><a href="">Категории каталога</a></li>
+                    <li><a href="/admin/category">Категории каталога</a></li>
                     <li><a href="">Товары</a></li>
                 </ul>
                 <ul class="nav nav-sidebar">
