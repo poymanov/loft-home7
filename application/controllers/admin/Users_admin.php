@@ -72,7 +72,10 @@ class Users_admin extends MY_Controller{
                 'is_activated' => $is_activated );
 
             $this->MY_model->update($id,$data,'users');
+            //Сообщение о успешной оперпции
             $this->setData ('message',"<div class='alert alert-success'> Сообщение: Данные пользователь № ".$id." успешно изменены.</div>");
+            //Страница для перенаправления
+            $this->setData ('url','/admin/users/');
             //Вызов отображений
             $this->load->view('admin/common/header',$this->data);
             $this->load->view('admin/massege.php',$this->data);
