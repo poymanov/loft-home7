@@ -43,8 +43,13 @@
         <label for="group" class="col-sm-2 control-label">Группа</label>
         <div class="col-md-6">
             <select class="form-control" name="users_group" id="users_group">
-                <option value="2" <?if($user['users_group']==2){echo 'selected';}?> >Пользователь</option>
-                    <option value="1" <?if($user['users_group']==1){echo 'selected';}?> >Аминистратор</option>
+                <?foreach ($allUsers_groups as $Users_groups):
+                    if ($user['users_group']==$Users_groups['id']) {
+                        echo "<option value='$Users_groups[id]' selected>".$Users_groups['name']."</option>";
+                    }
+                    else {
+                        echo "<option value='$Users_groups[id]'>".$Users_groups['name']."</option>";}
+                endforeach ?>
             </select>
         </div>
     </div>

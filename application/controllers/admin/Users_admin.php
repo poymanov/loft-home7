@@ -81,6 +81,8 @@ class Users_admin extends MY_Controller{
         else {
             $id = $this->input->get('id');
             $this->setData ('user',$this->MY_model->getWhere($id,'users'));
+            //Все группы пользователей
+            $this->setData ('allUsers_groups',$this->MY_model->get_all('users_groups'));
             //Вызов отображений
             $this->load->view('admin/common/header',$this->data);
             $this->load->view('admin/edituser',$this->data);
