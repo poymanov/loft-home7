@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Orders_admin extends MY_Controller{
     public function index(){
+
     //Параметры представления
     $this->setData('title','Заказы');
 

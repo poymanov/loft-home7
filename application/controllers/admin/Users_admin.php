@@ -5,14 +5,11 @@ class Users_admin extends MY_Controller{
 
     public function index(){
 
-        //Подгружаем модель пользователей
-        $this->load->model('users_model');
-
         //Удаление пользователя
         $action = $this->input->get('action');
         if ($action === 'deluser'){
            $id = $this->input->get('id');
-           $this->users_model->deleteUser($id);
+           $this->MY_model->del($id,'users');
            $this->setData('title', 'Пользователи сайта');
            $this->setData ('message',"<div class='alert alert-success'> Сообщение: Пользователь № ".$id." успешно удален с сайта.</div>");
             //Параметры представления
@@ -25,7 +22,7 @@ class Users_admin extends MY_Controller{
         else {
             //Параметры представления
             $this->setData('title', 'Пользователи сайта');
-            $this->setData ('users',$this->users_model->get_allUsers());
+            $this->setData ('users',$this->MY_model->get_all('users'));
             //Вызов отображений
             $this->load->view('admin/common/header',$this->data);
             $this->load->view('admin/users',$this->data);
@@ -37,11 +34,7 @@ class Users_admin extends MY_Controller{
 
     public function edituser() {
         $this->setData('title', 'Изменение данных пользователя');
-        //Подгружаем модель пользователей
-        $this->load->model('users_model');
-
         $submit = $this->input->post('submit');
-
 
         if ((isset($submit))){
             $id = $this->input->get('id');
@@ -59,7 +52,7 @@ class Users_admin extends MY_Controller{
                 'users_group' => $users_group,
                 'is_activated' => $is_activated );
 
-            $this->users_model->updateUser($id,$data);
+            $this->MY_model->update($id,$data,'users');
             $this->setData ('message',"<div class='alert alert-success'> Сообщение: Данные пользователь № ".$id." успешно изменены.</div>");
             //Вызов отображений
             $this->load->view('admin/common/header',$this->data);
@@ -68,7 +61,7 @@ class Users_admin extends MY_Controller{
         }
         else {
             $id = $this->input->get('id');
-            $this->setData ('user',$this->users_model->getOnenUser($id));
+            $this->setData ('user',$this->MY_model->getOnen($id,'users'));
             //Вызов отображений
             $this->load->view('admin/common/header',$this->data);
             $this->load->view('admin/edituser',$this->data);
