@@ -24,7 +24,7 @@ class My_Model extends CI_Model{
     //Получение данных по ID
     public function getWhere($id,$tableName) {
         $query = $this->db->get_where($tableName, array('id' => $id));
-        return $query->result_array();
+        return $query->row_array();
     }
     //Изменение данных по ID
     public function update($id,$data,$tableName) {

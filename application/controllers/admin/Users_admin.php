@@ -12,6 +12,8 @@ class Users_admin extends MY_Controller{
            $this->MY_model->del($id,'users');
            $this->setData('title', 'Пользователи сайта');
            $this->setData ('message',"<div class='alert alert-success'> Сообщение: Пользователь № ".$id." успешно удален с сайта.</div>");
+            //Страница для перенаправления
+            $this->setData ('url','/admin/users/');
             //Параметры представления
             $this->setData('title', 'Удаление пользователя');
            //Вызов отображений

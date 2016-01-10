@@ -66,6 +66,8 @@ $route['admin/users/edituser'] = 'admin/users_admin/edituser';
 $route['admin/orders'] = 'admin/orders_admin';
 $route['admin/orders/editorder'] = 'admin/orders_admin/editorder';
 $route['admin/category'] = 'admin/category_admin';
+$route['admin/category/editcategory'] = 'admin/category_admin/editcategory';
+$route['admin/category/newcategory'] = 'admin/category_admin/newcategory';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

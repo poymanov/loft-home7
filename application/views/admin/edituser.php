@@ -1,5 +1,4 @@
 <form action ="" method ="POST" class="form-horizontal" role="form">
-    <?foreach ($user as $user): ?>
     <div class="form-group">
         <label for="is_activated" class="col-sm-2 control-label">Активен</label>
         <div class="col-md-6">
@@ -58,7 +57,6 @@
             <button type="submit" name="submit" class="btn btn-default">Изменить данные</button>
         </div>
     </div>
-    <?php endforeach ?>
 </form>
 
 

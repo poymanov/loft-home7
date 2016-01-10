@@ -32,7 +32,7 @@ class Categories_model extends CI_Model {
 	}
 
     public function get_category_info($name) {
-        $query = $this->db->select('id,name,title,meta_keywords,meta_description')->get_where('categories',array('name'=>$name));
+        $query = $this->db->select('id,name,title,meta_keywords,meta_description,parent_id')->get_where('categories',array('name'=>$name));
         return $query->row_array();
     }
 
