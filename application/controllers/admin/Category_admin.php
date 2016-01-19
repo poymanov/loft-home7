@@ -82,20 +82,42 @@ class Category_admin extends MY_Controller{
         $this->setData('title', 'Добавление новой категории');
         $submit = $this->input->post('submit');
 
-        if ((isset($submit))){
+        //Правила для валидации формы
+        $rules = array(
+            array(
+                'field'=>'title',
+                'label'=>'Название',
+                'rules'=>'required'
+            ),
+            array(
+                'field'=>'name',
+                'label'=>'URL',
+                'rules'=>'required'
+            ),
+            array(
+                'field'=>'meta_keywords',
+                'label'=>'KEYWORDS',
+                'rules'=>'required'
+            ),
+            array(
+                'field'=>'meta_description',
+                'label'=>'DESCRIPTION',
+                'rules'=>'required'
+            ),
+        );
+
+        $this->form_validation->set_rules($rules);
+        //Вид вывода ошибок
+        $this->form_validation->set_error_delimiters("<div class='alert alert-danger'>", '</div>');
+
+        if ($this->form_validation->run() == TRUE){
             $title = $this->input->post('title');
             $parent_id = $this->input->post('parent_id');
             $name = $this->input->post('name');
             $meta_keywords = $this->input->post('meta_keywords');
             $meta_description = $this->input->post('meta_description');
-            if($title ==''  || $parent_id ==''  || $name ==''  || $meta_keywords =='' || $meta_description == '') {
-                //Сообщение о успешной оперпции
-                $this->setData ('message',"<div class='alert alert-danger'> Сообщение: Вы заполнили не все поля, попробуйте снова.</div>");
-                //Страница для перенаправления
-                $this->setData ('url','/admin/category_admin/newcategory');
-            }
-            else {
-                $data = array(
+
+            $data = array(
                     'title' => $title,
                     'parent_id' => $parent_id,
                     'name' => $name,
@@ -104,12 +126,11 @@ class Category_admin extends MY_Controller{
 
                 $this->db->insert('categories', $data);
 
-                //Сообщение о успешной оперпции
-                $this->setData ('message',"<div class='alert alert-success'> Сообщение: Данные категории успешно изменены.</div>");
-                //Страница для перенаправления
-                $this->setData ('url','/admin/category/');
-            }
+            //Сообщение о успешной оперпции
+            $this->setData ('message',"<div class='alert alert-success'> Сообщение: Данные категории успешно изменены.</div>");
 
+            //Страница для перенаправления
+            $this->setData ('url','/admin/category/');
 
             //Вызов отображений
             $this->load->view('admin/common/header',$this->data);

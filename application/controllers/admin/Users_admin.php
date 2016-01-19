@@ -57,7 +57,34 @@ class Users_admin extends MY_Controller{
         $this->setData('title', 'Изменение данных пользователя');
         $submit = $this->input->post('submit');
 
-        if ((isset($submit))){
+        //Правила для валидации формы
+        $rules = array(
+            array(
+                'field'=>'name',
+                'label'=>'Имя',
+                'rules'=>'required|alpha'
+            ),
+            array(
+                'field'=>'lastname',
+                'label'=>'Фамилия',
+                'rules'=>'required|alpha'
+            ),
+            array(
+                'field'=>'tel',
+                'label'=>'Телефон',
+                'rules'=>'required|numeric'
+            ),
+            array(
+                'field'=>'email',
+                'label'=>'email',
+                'rules'=>'required|valid_email'
+            ),
+        );
+        $this->form_validation->set_rules($rules);
+        $this->form_validation->set_error_delimiters("<div class='alert alert-danger'>", '</div>');
+
+        if ($this->form_validation->run() == TRUE){
+
             $id = $this->input->get('id');
             $name = $this->input->post('name');
             $lastname = $this->input->post('lastname');

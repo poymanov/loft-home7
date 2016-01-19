@@ -1,3 +1,7 @@
+<!-- Вывод Ошибок -->
+<?
+echo validation_errors();
+?>
 <form action ="" method ="POST" class="form-horizontal" role="form">
     <div class="form-group">
         <label for="is_activated" class="col-sm-2 control-label">Активен</label>

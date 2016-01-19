@@ -1,9 +1,14 @@
+<!-- Вывод Ошибок -->
+<?
+    echo validation_errors();
+?>
+
 <form action ="" method ="POST" class="form-horizontal" role="form">
     <!-- Название категории -->
     <div class="form-group">
         <label for="title" class="col-sm-2 control-label">Название</label>
         <div class="col-md-6">
-            <input type="text" class="form-control" name="title" id="title" >
+            <input type="text" class="form-control" name="title" value="<?=set_value('title');?>" id="title" >
         </div>
     </div>
     <!-- Родительская категория -->
@@ -27,21 +32,21 @@
     <div class="form-group">
         <label for="name" class="col-sm-2 control-label">URL</label>
         <div class="col-md-6">
-            <input type="text" class="form-control" name="name" id="name" >
+            <input type="text" class="form-control" name="name" value="<?=set_value('name');?>" id="name" >
         </div>
     </div>
     <!-- meta_keywords -->
     <div class="form-group">
         <label for="meta_keywords" class="col-sm-2 control-label">KEYWORDS</label>
         <div class="col-md-6">
-            <input type="text" class="form-control" name="meta_keywords" id="meta_keywords">
+            <input type="text" class="form-control" name="meta_keywords" value="<?=set_value('meta_keywords');?>" id="meta_keywords">
         </div>
     </div>
     <!-- meta_description -->
     <div class="form-group">
         <label for="meta_description" class="col-sm-2 control-label">DESCRIPTION</label>
         <div class="col-md-6">
-            <input type="text" class="form-control" name="meta_description" id="meta_description">
+            <input type="text" class="form-control" name="meta_description" value="<?=set_value('meta_description');?>" id="meta_description">
         </div>
     </div>
 
